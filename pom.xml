@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.finance</groupId>
+    <artifactId>finance-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.2.RELEASE</version>
+    </parent>
+
+    <modules>
+        <module>finance-common</module>
+        <module>finance-base-service</module>
+        <!--<module>finance-dao</module>-->
+        <!--<module>finance-web</module>-->
+        <module>finance-eureka-server</module>
+        <module>finance-config-server</module>
+        <module>finance-gateway-server</module>
+        <module>finance-acct-service</module>
+    </modules>
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <!-- Dalston.SR1 Camden.SR5  Brixton.RELEASE -->
+                <version>Dalston.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        <!--<dependencies>-->
+            <!--<dependency>-->
+                <!--<groupId>com.finance</groupId>-->
+                <!--<artifactId>finance-dao</artifactId>-->
+                <!--<version>1.0.0</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>com.finance</groupId>-->
+                <!--<artifactId>finance-com.finance.acct.base-com.finance.acct.base</artifactId>-->
+                <!--<version>1.0.0</version>-->
+            <!--</dependency>-->
+            <dependency>
+                <groupId>com.finance</groupId>
+                <artifactId>finance-common</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+</project>

@@ -1,0 +1,28 @@
+server:
+  port: 8000
+  tomcat:
+    max-threads: 3000
+    max-connections: 3000
+    accept-count: 300
+
+spring:
+  application:
+    name: finance-gateway-server
+  profiles:
+      active: '@profiles_active@'
+  cloud:
+    com.finance.acct.config:
+      failFast: true
+      discovery:
+        enabled: true
+        serviceId: finance-com.finance.acct.config-server
+        
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: '@eureka_host@'
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 2

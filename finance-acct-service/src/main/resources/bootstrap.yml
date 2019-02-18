@@ -1,0 +1,33 @@
+server:
+  port: 9010
+  context-path: /acct
+
+spring:
+  profiles:
+    active: '@profiles_active@'
+  application:
+    name: finance-acct-service
+  cloud:
+    config:
+      failFast: true
+      discovery:
+        enabled: true
+        serviceId: finance-config-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: '@eureka_host@'
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapperLocations: classpath*:mybatis/mapper/**/*.xml
+
+
+acct:
+  url: localhost:9010/acct

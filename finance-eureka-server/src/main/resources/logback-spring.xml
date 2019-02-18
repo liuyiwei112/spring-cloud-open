@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="3 seconds">
+   
+	<property name="log.path" value="./logs" />
+	<property name="log.name" value="axp-eureka-server.log" />
+
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				logbak: %d{yyyy-MM-dd HH:mm:ss.SSS} [%X] [%thread] %-5level %logger [%M:%L] - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="RollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<FileNamePattern>${log.path}/${log.name}.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<MaxHistory>30</MaxHistory>
+			<MaxFileSize>300MB</MaxFileSize>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+			    logbak: %d{yyyy-MM-dd HH:mm:ss.SSS} [%X] [%thread] %-5level %logger [%M:%L] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+    <logger name="com.axp.mapper" level="DEBUG" />
+    <logger name="org.thymeleaf" level="ERROR" />
+    
+	<root level="INFO">
+	    <appender-ref ref="Console" />
+	    <appender-ref ref="RollingFile" />
+    </root>
+
+	
+	
+</configuration>
